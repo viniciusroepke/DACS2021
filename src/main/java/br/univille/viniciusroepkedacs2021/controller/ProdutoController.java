@@ -1,7 +1,5 @@
 package br.univille.viniciusroepkedacs2021.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +37,11 @@ public class ProdutoController {
 
 
         return new ModelAndView("produto/index","listaProdutos",listaProdutos);
+    }
+
+    @GetMapping("/novo")
+    public ModelAndView novo(){
+        return new ModelAndView("produto/form");
     }
 
 }
