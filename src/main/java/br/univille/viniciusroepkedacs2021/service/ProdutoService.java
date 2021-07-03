@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import br.univille.viniciusroepkedacs2021.model.Produto;
 
-@Service //n é obrigatório, mas ajuda
+@Service //esta tag n é obrigatória, mas ajuda
 public interface ProdutoService {
     public List<Produto> getAllProdutos();
+    public Produto save(Produto produto);
 }

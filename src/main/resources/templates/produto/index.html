@@ -9,7 +9,7 @@
 			<nav th:replace="layout :: menu">(menu)</nav>
 
             <h1></h1>
-            <a th:href="@{/produto/novo}" class="btn btn-primary">Novo</a>
+            <a th:href="@{/produto/novo}" class="btn btn-primary">Novo produto</a>
             <h1></h1>
 
             <table class="table">
@@ -19,6 +19,7 @@
                         <th>Preço</th>
                         <th>Data</th>
                         <th>Categoria</th>
+                        <th></th> <!--Ação de editar-->
                     </tr>
                 </thead>
                 <tbody>
@@ -26,12 +27,13 @@
                         <td th:text="${umproduto.descricao}"></td>
                         <td th:text="${umproduto.preco}"></td>
                         <td th:text="${umproduto.dataRegistro}"></td>
-                        <td th:text="${umproduto.categoria.nome}"></td>
+                        <td th:text="${umproduto.categoria}"></td>
+                        <td><a th:href="@{'/produto/alterar/'+${umproduto.id}}" class="btn btn-outline-secondary btn-sm">Editar</a></td>
                     </tr>
                 </tbody>
             </table>
             
-            <a onClick="window.location.reload();" class="btn btn-light">Atualizar</a>
+            <!-- <a onClick="window.location.reload();" class="btn btn-light">Atualizar</a> -->
 
         </div>
 
