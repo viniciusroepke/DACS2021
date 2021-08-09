@@ -46,8 +46,18 @@
             $(document).ready(function(){
 
                 $("#produtos").on("click",".js-delete", function(){
+                    let button = $(this);
 
-                    bootbox.confirm("Confirmar exclusão (mentira, isso ainda nem funciona :P)", function(){
+                    bootbox.confirm("Confirmar exclusão", function(result){
+                        if(result){
+                            $.ajax({
+                                url : "/produto/delete/"+button.attr("data-id"),
+                                method : "GET",
+                                success : function(){
+                                    window.location.href = "/produto";
+                                }
+                            });
+                        }
 
                     });
                 })
