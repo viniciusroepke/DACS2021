@@ -1,1 +1,64 @@
-a
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: htmlhead"></head>
+
+    <body>
+        <div class="container">
+			<nav th:replace="layout :: menu">(menu)</nav>
+
+            <a th:href="@{/fornecedor/novo}" class="btn btn-primary">  Novo  </a>
+
+            <table class="table" id="fornecedores">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Usuário</th>
+                        <th>ID</th>
+                        <th>URL da API</th>
+                        <th>Autenticação da API</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="umfornecedor : ${listaFornecedores}">
+                        <td th:text="${umfornecedor.nome}"></td>
+                        <td th:text="${umfornecedor.usuario}"></td>
+                        <td th:text="${umfornecedor.id}"></td>
+                        <td th:text="${umfornecedor.urlAPI}"></td>
+                        <td th:text="${umfornecedor.urlAPIAuth}"></td>
+                        <td>
+                            <a th:href="@{'/fornecedor/alterar/'+${umfornecedor.id}}" class="btn btn-primary">Alterar</a>
+                            <button class="btn btn-danger js-delete" 
+                                    th:data-id="${umfornecedor.id}" >Excluir</button>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div th:include="layout :: footer" id="footer">(footer)</div>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $("#fornecedores").on("click",".js-delete", function(){
+                    let button = $(this);
+                    bootbox.confirm("Você confirma a exclusão do registro?", function(result){
+                        if(result){
+                            $.ajax({
+                                url : "/fornecedor/delete/" + button.attr("data-id"),
+                                method : "GET",
+                                success : function(){
+                                    window.location.href = "/fornecedor/";
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+    </body> 
+</html>

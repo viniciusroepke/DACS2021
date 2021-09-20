@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+ <html xmins:th="http://www.thymeleaf.org"
+    xmins:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:include="layout :: htmlhead"></head>
+
+    <body>
+        <div class="container">
+			<nav th:replace="layout :: menu">(menu)</nav>
+
+            <a th:href="@{/fornecedor}"><b>Voltar</b></a>
+            <h1></h1>
+            <h1 style="font-size:150%;">Cadastro de fornecedor</h1>
+
+            <form th:action="@{/fornecedor/(form)}" th:object="${fornecedor}" method="POST">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txtnome">Nome:</label>
+                            <input type="text" th:field="*{nome}" id="txtnome" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txturlAPI">URL da API:</label>
+                            <input type="text" th:field="*{urlAPI}" id="txturlAPI" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txturlAPIAuth">Autenticação da API:</label>
+                            <input type="text" th:field="*{urlAPIAuth}" id="txturlAPIAuth" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txtusuario">Usuário:</label>
+                            <input type="text" th:field="*{usuario}" id="txtusuario" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txtsenha">Senha:</label>
+                            <input type="text" th:field="*{senha}" id="txtsenha" class="form-control">
+                        </div>
+                    </div> 
+                </div>
+
+                <button class="btn btn-primary" type="submit">Enviar</button>
+
+            </form>
+
+
+        </div>
+
+        <div th:include="layout :: footer" id="footer">(footer)</div>
+    </body> 
+</html>
