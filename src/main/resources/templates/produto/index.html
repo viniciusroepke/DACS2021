@@ -9,7 +9,8 @@
 			<nav th:replace="layout :: menu">(menu)</nav>
 
             <h1></h1>
-            <a th:href="@{/produto/novo}" class="btn btn-primary">Novo produto</a>
+            <a th:href="@{/produto/novo}" class="btn btn-success">Novo produto</a>
+            <a th:href="@{/import-produto}" class="btn btn-primary">Importador</a>
             <h1></h1>
 
             <table class="table" id="produtos">
@@ -48,7 +49,7 @@
                 $("#produtos").on("click",".js-delete", function(){
                     let button = $(this);
 
-                    bootbox.confirm("Confirmar exclusão", function(result){
+                    bootbox.confirm("Confirmar exclusão", function(result){ //Result é booleano
                         if(result){
                             $.ajax({
                                 url : "/produto/delete/"+button.attr("data-id"),

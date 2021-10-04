@@ -10,5 +10,6 @@ public interface FornecedorService {
     public List<Fornecedor> getAllFornecedores();
     public Fornecedor save(Fornecedor fornecedor);
     public void delete(Fornecedor fornecedor);
+    public Fornecedor getFornecedor(long id);
 
 }

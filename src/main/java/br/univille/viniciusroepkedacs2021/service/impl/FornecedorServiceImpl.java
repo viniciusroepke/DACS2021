@@ -30,4 +30,9 @@ public class FornecedorServiceImpl implements FornecedorService {
         repository.delete(fornecedor);
     }
 
+    @Override
+    public Fornecedor getFornecedor(long id) {
+        return repository.getOne(id);
+
+    }
 }
